@@ -1,0 +1,11 @@
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Enviar">
+</form>
+
+{% if list %}
+  <a href="{% url 'movies:detail_watchlist' list.pk %}">Cancelar</a>
+{% else %}
+  <a href="{% url 'movies:watchlists' %}">Cancelar</a>
+{% endif %}

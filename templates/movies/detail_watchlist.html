@@ -1,0 +1,13 @@
+<h2>{{ list.name }}</h2>
+<h4>Autor: {{ list.owner.get_full_name }}</h4>
+
+<p>Películas:</p>
+<ul>
+  {% for movie in list.movies.all %}
+    <li>{{ movie.name }}</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'movies:edit_watchlist' list.pk %}">Editar</a>
+<a href="{% url 'movies:delete_watchlist' list.pk %}">Borrar</a>
+<a href="{% url 'movies:watchlists' %}">Volver</a>

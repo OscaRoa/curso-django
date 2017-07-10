@@ -1,0 +1,9 @@
+<h2>Lista de Películas</h2>
+
+<ul>
+  {% for movie in movies %}
+    <i>{{movie.name}}</i>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'movies:new_watchlist' %}">Crear nueva lista</a>
