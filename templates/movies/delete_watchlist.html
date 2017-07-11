@@ -1,0 +1,6 @@
+<form action="." method="post">
+  {% csrf_token %}
+  <h1>Si decides borrar la lista "{{ list.name }}", no podrás recuperarla.</h1>
+  <input type="submit" value="Borrar lista.">
+  <a href="{% url 'movies:detail_watchlist' list.pk %}">Cancelar</a>
+</form>

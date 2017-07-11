@@ -89,8 +89,15 @@ def update_movielist(request, id):
 
 
 def delete_movielist(request, id):
-    """View para borrar una lista."""
+    """
+    View para borrar una lista. Si es un método GET, le pedimos confirmación
+    al usuario. Si es un método POST, significa que el usuario ha confirmado
+    y podemos borrar la lista.
+    """
     object = get_object_or_404(MovieList, pk=id)
-    object.delete()
 
-    return redirect("movies:watchlists")
+    if request.method == "POST":
+        object.delete()
+        return redirect("movies:watchlists")
+    else:
+        return render(request, "movies/delete_watchlist.html", {'list': object})
